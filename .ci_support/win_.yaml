@@ -1,0 +1,13 @@
+c_compiler:
+- vs2017
+channel_sources:
+- conda-forge,defaults
+channel_targets:
+- conda-forge main
+icu:
+- '64.2'
+pin_run_as_build:
+  icu:
+    max_pin: x
+vc:
+- '14'
