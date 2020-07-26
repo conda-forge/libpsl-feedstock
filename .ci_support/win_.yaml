@@ -5,7 +5,7 @@ channel_sources:
 channel_targets:
 - conda-forge main
 icu:
-- '64.2'
+- '67'
 pin_run_as_build:
   icu:
     max_pin: x
