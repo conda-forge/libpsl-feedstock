@@ -5,9 +5,8 @@ channel_sources:
 channel_targets:
 - conda-forge main
 icu:
-- '67'
-pin_run_as_build:
-  icu:
-    max_pin: x
+- '68'
+target_platform:
+- win-64
 vc:
 - '14'
