@@ -5,7 +5,7 @@ channel_sources:
 channel_targets:
 - conda-forge main
 icu:
-- '69'
+- '70'
 target_platform:
 - win-64
 vc:
