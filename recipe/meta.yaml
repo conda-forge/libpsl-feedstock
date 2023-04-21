@@ -1,16 +1,16 @@
 {% set name = "libpsl" %}
-{% set version = "0.21.1" %}
+{% set version = "0.21.2" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://github.com/rockdaboot/{{ name }}/releases/download/0.21.1/{{ name }}-{{ version }}.tar.gz
-  sha256: ac6ce1e1fbd4d0254c4ddb9d37f1fa99dec83619c1253328155206b896210d4c
+  url: https://github.com/rockdaboot/{{ name }}/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz
+  sha256: e35991b6e17001afa2c0ca3b10c357650602b92596209b7492802f3768a6285f
 
 build:
-  number: 6
+  number: 0
   skip: True  # [win and vc<14]
 
 requirements:
