@@ -9,7 +9,8 @@ source:
   url: https://github.com/rockdaboot/{{ name }}/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz
   sha256: e35991b6e17001afa2c0ca3b10c357650602b92596209b7492802f3768a6285f
   patches:
-    # fix compilation on Windows with upstream patch
+    # fix compilation on Windows with upstream patches
+    - 50ee8988993a3e3f7224a0c831998957f34e412e.patch
     - 3dfe19d4578c361f800738c9c974d9c405801209.patch
 
 build:
