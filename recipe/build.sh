@@ -17,6 +17,6 @@ meson setup builddir \
 	 ${MESON_ARGS} \
         --default-library=shared\
 	-Druntime=libicu \
-	-Dbuiltin=libicu
+	-Dbuiltin=true
 ninja -v -C builddir -j ${CPU_COUNT}
 ninja -C builddir install -j ${CPU_COUNT}
