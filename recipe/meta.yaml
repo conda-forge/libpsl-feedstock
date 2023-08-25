@@ -14,7 +14,7 @@ source:
     - 3dfe19d4578c361f800738c9c974d9c405801209.patch
 
 build:
-  number: 0
+  number: 1
   skip: True  # [win and vc<14]
 
 requirements:
