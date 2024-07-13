@@ -14,7 +14,7 @@ source:
     - 3dfe19d4578c361f800738c9c974d9c405801209.patch
 
 build:
-  number: 2
+  number: 3
   run_exports:
     # Just a guess
     - {{ pin_subpackage('libpsl', max_pin='x.x') }}
@@ -22,6 +22,7 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
     - ninja
     - pkg-config
