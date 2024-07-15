@@ -8,10 +8,6 @@ package:
 source:
   url: https://github.com/rockdaboot/{{ name }}/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz
   sha256: 1dcc9ceae8b128f3c0b3f654decd0e1e891afc6ff81098f227ef260449dae208
-  patches:
-    # fix compilation on Windows with upstream patches
-    - 50ee8988993a3e3f7224a0c831998957f34e412e.patch
-    - 3dfe19d4578c361f800738c9c974d9c405801209.patch
 
 build:
   number: 0
