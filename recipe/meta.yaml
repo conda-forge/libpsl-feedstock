@@ -10,7 +10,7 @@ source:
   sha256: 1dcc9ceae8b128f3c0b3f654decd0e1e891afc6ff81098f227ef260449dae208
 
 build:
-  number: 0
+  number: 1
   run_exports:
     # Just a guess
     - {{ pin_subpackage('libpsl', max_pin='x.x') }}
