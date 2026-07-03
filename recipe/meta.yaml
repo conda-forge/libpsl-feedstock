@@ -10,32 +10,63 @@ source:
   sha256: c45c3aa17576b99873e05a9b09a44041b065bbfa390e6d474d06fbfaeb9c7722
 
 build:
-  number: 0
+  number: 1
   run_exports:
     # Just a guess
     - {{ pin_subpackage('libpsl', max_pin='x.x') }}
 
 requirements:
-  build:
-    - {{ compiler('c') }}
-    - {{ stdlib("c") }}
-    - {{ compiler('cxx') }}
-    - ninja
-    - pkg-config
-    - meson
-  host:
-    - icu
+    build:
+        - {{ compiler('c') }}
+        - {{ stdlib("c") }}
+        - {{ compiler('cxx') }}
+        - ninja
+        - pkg-config
+        - meson
+    host:
+        - icu
+outputs:
+  - name: libpsl
+    files:
+      - include/libpsl.h                 # [unix]
+      - lib/pkgconfig/libpsl.pc          # [unix]
+      - lib/libpsl.so*                   # [linux]
+      - lib/libpsl*.dylib                # [osx]
+      - Library/include/libpsl.h         # [win]
+      - Library/lib/pkgconfig/libpsl.pc  # [win]
+      - Library/bin/psl-*.dll            # [win]
+      - Library/lib/psl.lib              # [win]
+    test:
+      commands:
+        - test -f ${PREFIX}/include/libpsl.h                       # [unix]
+        - test -f ${PREFIX}/lib/pkgconfig/libpsl.pc                # [unix]
+        - test -f ${PREFIX}/lib/libpsl.so                          # [linux]
+        - test -f ${PREFIX}/lib/libpsl.dylib                       # [osx]
+        - test ! -f ${PREFIX}/lib/libpsl.a                         # [unix]
+        - if not exist %LIBRARY_INC%\\libpsl.h exit 1              # [win]
+        - if not exist %LIBRARY_LIB%\\pkgconfig\\libpsl.pc exit 1  # [win]
+        - if not exist %LIBRARY_LIB%\\psl.lib exit 1               # [win]
+        - if not exist %LIBRARY_BIN%\\psl-*.dll exit 1             # [win]
 
-test:
-  commands:
-    - test -f ${PREFIX}/include/libpsl.h                       # [unix]
-    - test -f ${PREFIX}/lib/pkgconfig/libpsl.pc                # [unix]
-    - test -f ${PREFIX}/lib/libpsl.dylib                       # [osx]
-    - test -f ${PREFIX}/lib/libpsl.so                          # [linux]
-    - if not exist %LIBRARY_LIB%\\pkgconfig\\libpsl.pc exit 1  # [win]
-    - if not exist %LIBRARY_LIB%\\psl.lib exit 1               # [win]
-    - if not exist %LIBRARY_INC%\\libpsl.h exit 1              # [win]
-    - if not exist %LIBRARY_BIN%\\psl-5.dll exit 1             # [win]
+  - name: libpsl-static
+    requirements:
+      host:
+        - {{ pin_subpackage('libpsl', exact=True) }}
+      run:
+        - {{ pin_subpackage('libpsl', exact=True) }}
+
+    files:
+      - lib/libpsl.a                    # [unix]
+      - Library/lib/libpsl.a            # [win]
+    test:
+      commands:
+          - test -f ${PREFIX}/include/libpsl.h                       # [unix]
+          - test -f ${PREFIX}/lib/pkgconfig/libpsl.pc                # [unix]
+          - test -f $PREFIX/lib/libpsl.a                             # [unix]
+          - test -f ${PREFIX}/lib/libpsl.so                          # [linux]
+          - if not exist %LIBRARY_INC%\\libpsl.h exit 1              # [win]
+          - if not exist %LIBRARY_LIB%\\pkgconfig\\libpsl.pc exit 1  # [win]
+          - if not exist %LIBRARY_LIB%\libpsl.a exit 1               # [win]
 
 about:
   home: https://github.com/rockdaboot/libpsl
