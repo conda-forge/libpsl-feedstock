@@ -10,5 +10,7 @@ cxx_compiler:
 - vs2022
 icu:
 - '78'
+libpsl:
+- '0.22'
 target_platform:
 - win-64
