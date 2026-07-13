@@ -61,6 +61,7 @@ Current release info
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-libpsl-green.svg)](https://anaconda.org/conda-forge/libpsl) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libpsl.svg)](https://anaconda.org/conda-forge/libpsl) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libpsl.svg)](https://anaconda.org/conda-forge/libpsl) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libpsl.svg)](https://anaconda.org/conda-forge/libpsl) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-libpsl--static-green.svg)](https://anaconda.org/conda-forge/libpsl-static) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libpsl-static.svg)](https://anaconda.org/conda-forge/libpsl-static) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libpsl-static.svg)](https://anaconda.org/conda-forge/libpsl-static) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libpsl-static.svg)](https://anaconda.org/conda-forge/libpsl-static) |
 
 Installing libpsl
 =================
@@ -72,16 +73,16 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `libpsl` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `libpsl, libpsl-static` can be installed with `conda`:
 
 ```
-conda install libpsl
+conda install libpsl libpsl-static
 ```
 
 or with `mamba`:
 
 ```
-mamba install libpsl
+mamba install libpsl libpsl-static
 ```
 
 It is possible to list all of the versions of `libpsl` available on your platform with `conda`:

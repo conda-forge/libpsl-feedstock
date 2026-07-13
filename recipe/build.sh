@@ -15,7 +15,7 @@ fi
 
 meson setup builddir \
 	 ${MESON_ARGS} \
-        --default-library=shared\
+        --default-library=both\
 	-Druntime=libicu \
 	-Dbuiltin=true
 ninja -v -C builddir -j ${CPU_COUNT}
