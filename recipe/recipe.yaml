@@ -68,8 +68,6 @@ outputs:
       files:
         - ${{ "Library/" if win }}lib/libpsl.a
     requirements:
-      run_exports:
-        - ${{ pin_subpackage('libpsl', exact=True) }}
       build:
         - ${{ compiler('c') }}
         - ${{ stdlib("c") }}
@@ -77,6 +75,8 @@ outputs:
         - ninja
         - pkg-config
         - meson
+      run:
+        - ${{ pin_subpackage('libpsl', exact=True) }}
     tests:
       - script:
           - if: unix
