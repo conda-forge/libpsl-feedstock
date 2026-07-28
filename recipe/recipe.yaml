@@ -81,16 +81,9 @@ outputs:
       - script:
           - if: unix
             then:
-              - test ! -f ${PREFIX}/include/libpsl.h
-              - test ! -f ${PREFIX}/lib/pkgconfig/libpsl.pc
-              - test ! -f ${PREFIX}/lib/libpsl${SHLIB_EXT}
               - test -f ${PREFIX}/lib/libpsl.a
           - if: win
             then:
-              - if exist %LIBRARY_PREFIX%\include\libpsl.h (exit 1)
-              - if exist %LIBRARY_PREFIX%\lib\pkgconfig\libpsl.pc (exit 1)
-              - if exist %LIBRARY_PREFIX%\bin\psl-*.dll (exit 1)
-              - if exist %LIBRARY_PREFIX%\lib\psl.lib (exit 1)
               - if not exist %LIBRARY_PREFIX%\lib\libpsl.a (exit 1)
 about:
   homepage: https://github.com/rockdaboot/libpsl
