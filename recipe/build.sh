@@ -13,10 +13,20 @@ if [[ "$target_platform" == "osx-arm64" && "$CONDA_BUILD_CROSS_COMPILATION" == "
   unset _CONDA_PYTHON_SYSCONFIGDATA_NAME
 fi
 
-meson setup builddir \
-	 ${MESON_ARGS} \
-        --default-library=both\
-	-Druntime=libicu \
-	-Dbuiltin=true
+
+if [[ $PKG_NAME == "libpsl" ]]; then 
+  meson setup builddir \
+	   ${MESON_ARGS} \
+     --default-library=shared \
+     -Druntime=libicu \
+     -Dbuiltin=true
+else
+  meson setup builddir \
+	   ${MESON_ARGS} \
+     --default-library=static \
+     -Druntime=no \
+     -Dbuiltin=true
+fi
+
 ninja -v -C builddir -j ${CPU_COUNT}
 ninja -C builddir install -j ${CPU_COUNT}

@@ -9,6 +9,8 @@ Package license: MIT
 
 Summary: A C library to handle the Public Suffix List
 
+Development: https://github.com/rockdaboot/libpsl
+
 Current build status
 ====================
 
