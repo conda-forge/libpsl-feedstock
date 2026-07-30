@@ -15,11 +15,19 @@ if "%MESON_ARGS%"=="" (
     set "MESON_ARGS=--buildtype=release --prefix=%LIBRARY_PREFIX_M% --libdir=lib"
 )
 
+:: win-arm64: no ICU (builtin PSL only). Same runtime=no as the static build.
 if "%PKG_NAME%"=="libpsl-static" (
-    %BUILD_PREFIX%\Scripts\meson.exe setup builddir %MESON_ARGS% --wrap-mode=nofallback --backend=ninja -Dbuiltin=true -Druntime=no --default-library=static
+    set "PSL_RUNTIME=no"
+    set "PSL_LIBRARY=static"
+) else if "%target_platform%"=="win-arm64" (
+    set "PSL_RUNTIME=no"
+    set "PSL_LIBRARY=shared"
 ) else (
-    %BUILD_PREFIX%\Scripts\meson.exe setup builddir %MESON_ARGS% --wrap-mode=nofallback --backend=ninja -Dbuiltin=true -Druntime=libicu --default-library=shared
+    set "PSL_RUNTIME=libicu"
+    set "PSL_LIBRARY=shared"
 )
+
+%BUILD_PREFIX%\Scripts\meson.exe setup builddir %MESON_ARGS% --wrap-mode=nofallback --backend=ninja -Dbuiltin=true -Druntime=%PSL_RUNTIME% --default-library=%PSL_LIBRARY%
 if errorlevel 1 exit 1
 
 ninja -v -C builddir -j %CPU_COUNT%

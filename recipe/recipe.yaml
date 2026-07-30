@@ -44,7 +44,9 @@ outputs:
         - pkg-config
         - meson
       host:
-        - icu
+        - if: not (win and arm64)
+          then:
+            - icu
     tests:
       - script:
           - if: unix
