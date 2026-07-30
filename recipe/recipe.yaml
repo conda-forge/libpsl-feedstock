@@ -1,6 +1,6 @@
 context:
   version: "0.22.0"
-  build_number: 2
+  build_number: 3
 
 recipe:
   name: libpsl-packages
@@ -44,7 +44,9 @@ outputs:
         - pkg-config
         - meson
       host:
-        - icu
+        - if: not (win and arm64)
+          then:
+            - icu
     tests:
       - script:
           - if: unix
