@@ -1,6 +1,6 @@
 context:
   version: "0.23.1"
-  build_number: 0
+  build_number: 1
 
 recipe:
   name: libpsl-packages
@@ -37,6 +37,8 @@ outputs:
         # Just a guess
         - ${{ pin_subpackage('libpsl', upper_bound='x.x') }}
       build:
+        - if: unix
+          then: gnuconfig
         - ${{ compiler('c') }}
         - ${{ stdlib("c") }}
         - ${{ compiler('cxx') }}
