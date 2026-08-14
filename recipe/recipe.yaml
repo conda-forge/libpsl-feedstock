@@ -37,8 +37,6 @@ outputs:
         # Just a guess
         - ${{ pin_subpackage('libpsl', upper_bound='x.x') }}
       build:
-        - if: unix
-          then: gnuconfig
         - ${{ compiler('c') }}
         - ${{ stdlib("c") }}
         - ${{ compiler('cxx') }}
