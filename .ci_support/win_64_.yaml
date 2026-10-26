@@ -9,6 +9,6 @@ channel_targets:
 cxx_compiler:
 - vs2022
 icu:
-- '78'
+- '79'
 target_platform:
 - win-64
