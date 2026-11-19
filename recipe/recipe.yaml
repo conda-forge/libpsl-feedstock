@@ -1,6 +1,6 @@
 context:
   version: "0.23.1"
-  build_number: 2
+  build_number: 3
 
 recipe:
   name: libpsl-packages
@@ -12,6 +12,8 @@ source:
 
 build:
   number: ${{ build_number }}
+  # ICU 75.1 was not published for these targets.
+  skip: target_platform == "linux-riscv64" or target_platform == "win-arm64"
 
 outputs:
   - package:
