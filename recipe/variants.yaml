@@ -1,0 +1,3 @@
+# Keep this maintenance build compatible with the ICU ABI used by older Arrow builds.
+icu:
+  - "75.1"
